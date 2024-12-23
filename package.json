@@ -1,0 +1,32 @@
+{
+  "name": "shopapi",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "db:studio": "bunx prisma studio"
+  },
+  "dependencies": {
+    "@bogeychan/elysia-logger": "^0.1.6",
+    "@elysiajs/cors": "^1.1.1",
+    "@elysiajs/jwt": "^1.1.1",
+    "@elysiajs/swagger": "^1.1.6",
+    "@prisma/client": "6.1.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "elysia": "^1.1.26",
+    "nanoid": "^5.0.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "stripe": "^17.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "bun-types": "latest",
+    "prisma": "^6.1.0"
+  },
+  "module": "src/index.js"
+}
