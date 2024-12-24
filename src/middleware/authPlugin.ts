@@ -21,7 +21,7 @@ export const authPlugin = (app: Elysia) =>
       const token = authorization.slice(7);
       const payload = await jwt.verify(token);
 
-      if (!payload) {
+      if (!payload || !payload.sub) {
         return error(401, 'Unauthorized');
       }
 

@@ -16,24 +16,24 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  orders    Order[]
+  orders Order[]
 }
 
 model Product {
-  id          String      @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   description String
   image       String
   price       Float
   stock       Int
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  orderItems  OrderItem[]
+  orderItems OrderItem[]
 }
 
 model OrderItem {
-  id        String   @id @default(uuid())
+  id        String  @id @default(uuid())
   quantity  Int
   price     Float
   productId String
@@ -58,15 +58,15 @@ enum DeliveryStatus {
 }
 
 model Order {
-  id                String       @id @default(cuid())
-  deliveryAddress   String
-  deliveryStatus    String
-  totalPrice        Float
-  paymentDetails    String
-  paymentStatus     String
-  paymentIntentId   String
-  user              User         @relation(fields: [userId], references: [id])
-  userId            String
-  orderItems        OrderItem[]  // Added relation field for the opposite side of OrderItem
-  createdAt         DateTime     @default(now())
+  id              String         @id @default(cuid())
+  deliveryAddress String
+  deliveryStatus  DeliveryStatus // Use enum type
+  totalPrice      Float
+  paymentDetails  String
+  paymentStatus   PaymentStatus  // Use enum type
+  paymentIntentId String
+  user            User           @relation(fields: [userId], references: [id])
+  userId          String
+  orderItems      OrderItem[]    // Added relation field for the opposite side of OrderItem
+  createdAt       DateTime       @default(now())
 }
