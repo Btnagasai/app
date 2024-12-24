@@ -11,6 +11,8 @@ export const orderRouter = new Elysia({ prefix: '/orders' })
   .post(
     '/create',
     async ({ user, body }) => {
+      console.log ({user});
+      console.log({body})
       try {
         const { deliveryAddress, orderItems, totalPrice } = body; // Extract data from the request body
         const orderId = "order_" + randomUUIDv7();
@@ -28,7 +30,7 @@ export const orderRouter = new Elysia({ prefix: '/orders' })
             paymentIntentId: "",
           },
         });
-
+        console.log(newOrder)
         // Create order items in the database
         await prisma.orderItem.createMany({
           data: orderItems.map((orderItem) => ({
