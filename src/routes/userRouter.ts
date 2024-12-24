@@ -40,30 +40,25 @@ export const userRouter = new Elysia({ prefix: "/user" })
       }),
     }
   )
-  .delete(
-    "/:id",
-    async ({ params }) => {
-      try {
-        const { id } = params;
-        const deleteUser = await prisma.user.delete({
-          where: {
-            id,
-          },
-        });
-
-        return deleteUser;
-      } catch (e) {
-        return error(500, "Internal Server Error");
-      }
-    },
-    {
-      params: t.Object({
-        id: t.String({
-          minLength: 1,
-        }),
-      }),
+  .delete("/:id", async({params}) =>{
+    try{
+      const {id} = params;
+      const deleteUser = await prisma.user.delete({
+        where: {
+          id: id,
+        }
+      });
+      return deleteUser;
+    }catch  (e) {
+      return error(500, "Internal Server Error");
     }
-  )
+  }, {
+    params: t.Object({
+      id: t.String({minLength:1,}),
+  }),
+  })
+
+  
   .put(
     "/:id",
     async ({ params, body }) => {
